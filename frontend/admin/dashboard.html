@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard</title>
+<link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body>
+
+<header class="admin-header">
+  <h1 data-i18n="adm_title">Church Website — Admin</h1>
+  <div class="admin-header-right">
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button data-lang-btn="am">አማ</button>
+      <button data-lang-btn="en">EN</button>
+    </div>
+    <span class="who" id="who"></span>
+    <button class="btn-link" id="logout-btn" data-i18n="adm_logout">Log out</button>
+  </div>
+</header>
+
+<div class="admin-shell">
+  <nav class="admin-tabs">
+    <button data-tab="news" class="active">📰 <span data-i18n="adm_tab_news">News</span></button>
+    <button data-tab="pages">📄 <span data-i18n="adm_tab_pages">Pages</span></button>
+    <button data-tab="settings">⚙️ <span data-i18n="adm_tab_settings">Settings</span></button>
+    <a href="/index.html" class="btn-link" style="display:block;padding:13px 26px;margin-top:14px;" data-i18n="adm_back_to_site">&larr; Back to site</a>
+  </nav>
+
+  <main class="admin-main">
+
+    <!-- NEWS TAB -->
+    <section id="tab-news">
+      <div id="news-list-view">
+        <h2 data-i18n="adm_news_heading">News</h2>
+        <p class="empty-state" data-i18n="adm_news_sub">Posts appear on the News page and the homepage, most recent first.</p>
+        <button class="btn" id="add-news-btn" data-i18n="adm_add_news">+ Add news post</button>
+        <div class="panel" id="news-list" style="margin-top:18px;"></div>
+      </div>
+
+      <div id="news-form-view" style="display:none;">
+        <h2 id="news-form-title">Add news post</h2>
+        <div id="news-msg"></div>
+        <form id="news-form">
+          <div class="panel">
+            <div class="two-col">
+              <div class="field">
+                <label data-i18n="adm_title_am">Title (Amharic)</label>
+                <input type="text" id="n-title-am">
+              </div>
+              <div class="field">
+                <label data-i18n="adm_title_en">Title (English)</label>
+                <input type="text" id="n-title-en">
+              </div>
+            </div>
+            <div class="two-col">
+              <div class="field">
+                <label><span data-i18n="adm_summary_am">Summary (Amharic)</span> <span class="hint" data-i18n="adm_shown_in_list">shown in the list</span></label>
+                <textarea id="n-summary-am" rows="2"></textarea>
+              </div>
+              <div class="field">
+                <label><span data-i18n="adm_summary_en">Summary (English)</span> <span class="hint" data-i18n="adm_shown_in_list">shown in the list</span></label>
+                <textarea id="n-summary-en" rows="2"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="field">
+              <label data-i18n="adm_body_am">Body (Amharic)</label>
+              <div id="n-body-am-editor"></div>
+            </div>
+            <div class="field" style="margin-top:18px;">
+              <label data-i18n="adm_body_en">Body (English)</label>
+              <div id="n-body-en-editor"></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="field">
+              <label><span data-i18n="adm_cover_image">Cover image</span> <span class="hint" data-i18n="adm_optional">optional</span></label>
+              <input type="file" id="n-image-file" accept="image/*">
+              <div id="n-image-preview" style="margin-top:10px;"></div>
+              <input type="hidden" id="n-image-url">
+            </div>
+            <div class="two-col">
+              <div class="field">
+                <label data-i18n="adm_author">Author</label>
+                <input type="text" id="n-author" value="Admin">
+              </div>
+              <div class="field">
+                <label data-i18n="adm_status">Status</label>
+                <div class="checkbox-row">
+                  <input type="checkbox" id="n-published" checked>
+                  <label for="n-published" style="margin:0;font-weight:400;" data-i18n="adm_published_visible">Published (visible on the site)</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn" type="submit" data-i18n="adm_save_post">Save post</button>
+          <button class="btn secondary" type="button" id="news-cancel-btn" data-i18n="adm_cancel">Cancel</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- PAGES TAB -->
+    <section id="tab-pages" style="display:none;">
+      <div id="pages-list-view">
+        <h2 data-i18n="adm_pages_heading">Pages</h2>
+        <p class="empty-state" data-i18n="adm_pages_sub">Pages like History and Hierarchy appear in the site menu. Add as many as you need.</p>
+        <button class="btn" id="add-page-btn" data-i18n="adm_add_page">+ Add page</button>
+        <div class="panel" id="pages-list" style="margin-top:18px;"></div>
+      </div>
+
+      <div id="page-form-view" style="display:none;">
+        <h2 id="page-form-title">Add page</h2>
+        <div id="page-msg"></div>
+        <form id="page-form">
+          <div class="panel">
+            <div class="two-col">
+              <div class="field">
+                <label data-i18n="adm_title_am">Page title (Amharic)</label>
+                <input type="text" id="p-title-am">
+              </div>
+              <div class="field">
+                <label data-i18n="adm_title_en">Page title (English)</label>
+                <input type="text" id="p-title-en">
+              </div>
+            </div>
+            <div class="checkbox-row">
+              <input type="checkbox" id="p-show-menu" checked>
+              <label for="p-show-menu" style="margin:0;font-weight:400;" data-i18n="adm_show_in_menu">Show in site menu</label>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="field">
+              <label data-i18n="adm_content_am">Content (Amharic)</label>
+              <div id="p-content-am-editor"></div>
+            </div>
+            <div class="field" style="margin-top:18px;">
+              <label data-i18n="adm_content_en">Content (English)</label>
+              <div id="p-content-en-editor"></div>
+            </div>
+            <p class="hint" style="margin-top:10px;">
+              Tip: for the Hierarchy page, use the list buttons plus <strong>Indent →</strong> / <strong>← Outdent</strong>
+              to build a nested tree — it will automatically display as a connected tree on the site.
+            </p>
+          </div>
+
+          <button class="btn" type="submit" data-i18n="adm_save_page">Save page</button>
+          <button class="btn secondary" type="button" id="page-cancel-btn" data-i18n="adm_cancel">Cancel</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- SETTINGS TAB -->
+    <section id="tab-settings" style="display:none;">
+      <h2 data-i18n="adm_settings_heading">Settings</h2>
+      <div class="panel" style="max-width:420px;">
+        <div id="settings-msg"></div>
+        <form id="settings-form">
+          <div class="field">
+            <label data-i18n="adm_current_password">Current password</label>
+            <input type="password" id="s-current" required>
+          </div>
+          <div class="field">
+            <label data-i18n="adm_new_password">New password</label>
+            <input type="password" id="s-new" required minlength="6">
+          </div>
+          <button class="btn" type="submit" data-i18n="adm_update_password">Update password</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<script src="/js/i18n.js"></script>
+<script src="/admin/js/admin-api.js"></script>
+<script src="/admin/js/rich-editor.js"></script>
+<script src="/admin/js/admin.js"></script>
+</body>
+</html>

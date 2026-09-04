@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ቤተ ክርስቲያናችን | Our Church</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header id="site-header" class="site-header"></header>
+
+<section class="hero">
+  <div class="wrap">
+    <p class="hero-eyebrow" data-i18n="hero_eyebrow"></p>
+    <h2 data-i18n="hero_title"></h2>
+    <p data-i18n="site_tagline"></p>
+    <a class="hero-cta" href="#latest-news" data-i18n="hero_cta"></a>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="hero-card">
+    <h3 data-i18n="hero_card_title"></h3>
+    <ul>
+      <li><span class="check">&#10003;</span><span data-i18n="hero_card_item1"></span></li>
+      <li><span class="check">&#10003;</span><span data-i18n="hero_card_item2"></span></li>
+      <li><span class="check">&#10003;</span><span data-i18n="hero_card_item3"></span></li>
+    </ul>
+  </div>
+  <div class="hero-card-spacer"></div>
+</div>
+
+<main>
+  <div class="wrap layout">
+    <section id="latest-news">
+      <h2 class="section-title" data-i18n="latest_news"></h2>
+      <div class="panel news-ticker-wrap">
+        <span class="news-ticker-label" data-i18n="breaking"></span>
+        <div class="news-ticker" id="news-ticker">
+          <div class="news-ticker-track" id="news-ticker-track">
+            <ul class="news-list" id="news-list">
+              <li class="skeleton" data-i18n="loading"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <p style="margin-top:18px;">
+        <a href="/news.html" class="read-more" data-i18n="view_all_news"></a>
+      </p>
+    </section>
+
+    <aside class="panel">
+      <p class="sidebar-title" data-i18n="nav_home"></p>
+      <ul class="page-links" id="page-links"></ul>
+    </aside>
+  </div>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="/js/i18n.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/layout.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/home.js"></script>
+</body>
+</html>

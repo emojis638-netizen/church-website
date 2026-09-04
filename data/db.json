@@ -1,0 +1,73 @@
+{
+  "admin": {
+    "username": "yoni",
+    "passwordHash": "$2a$10$76lTAFz92m6w2V.YIXeuIu7NxTrmlORFXA0r5prSrKUcRg1CTTL0y"
+  },
+  "nextIds": {
+    "page": 4,
+    "news": 3
+  },
+  "pages": [
+    {
+      "id": 1,
+      "slug": "history",
+      "title_am": "ታሪክ",
+      "title_en": "History",
+      "content_am": "<p>የቤተ ክርስቲያናችን ታሪክ በዚህ ገጽ ላይ ይቀመጣል። አስተዳዳሪው ይህን ጽሑፍ ከቁጥጥር ሰሌዳው ላይ ማስተካከል ይችላል።</p>",
+      "content_en": "<p>The history of our church will appear here. The admin can edit this text from the dashboard.</p>",
+      "order": 1,
+      "showInMenu": true,
+      "isSystem": true
+    },
+    {
+      "id": 2,
+      "slug": "hierarchy",
+      "title_am": "የቤተ ክርስቲያን መዋቅር",
+      "title_en": "Church Hierarchy",
+      "content_am": "<p>የቤተ ክርስቲያኑ የአመራር መዋቅር በዚህ ገጽ ላይ ይዘረዘራል።</p><ul><li>ፓትርያርክ<ul><li>ሊቀ ጳጳስ<ul><li>ኤጲስ ቆጶስ</li><li>ኤጲስ ቆጶስ</li></ul></li><li>ሊቀ ጳጳስ<ul><li>ኤጲስ ቆጶስ</li></ul></li></ul></li><li>ሲኖዶስ<ul><li>ጸሐፊ</li><li>አባላት</li></ul></li></ul>",
+      "content_en": "<p>The church's leadership structure is listed here.</p><ul><li>Patriarch<ul><li>Archbishop<ul><li>Bishop</li><li>Bishop</li></ul></li><li>Archbishop<ul><li>Bishop</li></ul></li></ul></li><li>Holy Synod<ul><li>Secretary</li><li>Members</li></ul></li></ul>",
+      "order": 2,
+      "showInMenu": true,
+      "isSystem": true
+    },
+    {
+      "id": 3,
+      "slug": "about",
+      "title_am": "ስለ እኛ",
+      "title_en": "About Us",
+      "content_am": "<p>ስለ ቤተ ክርስቲያናችን አጭር መግለጫ እዚህ ይፃፉ።</p>",
+      "content_en": "<p>Write a short description about the church here.</p>",
+      "order": 3,
+      "showInMenu": true,
+      "isSystem": false
+    }
+  ],
+  "news": [
+    {
+      "id": 1,
+      "title_am": "እንኳን ደህና መጡ",
+      "title_en": "Welcome",
+      "summary_am": "ወደ አዲሱ የቤተ ክርስቲያናችን ድረ ገጽ እንኳን ደህና መጡ።",
+      "summary_en": "Welcome to our new church website.",
+      "body_am": "<p>ይህ ድረ ገጽ ወቅታዊ ዜናዎችን፣ ታሪክን እና የቤተ ክርስቲያኑን መዋቅር ለማካፈል ተዘጋጅቷል።</p>",
+      "body_en": "<p>This website was built to share news, history, and the structure of our church community.</p>",
+      "image": null,
+      "author": "Admin",
+      "date": "2026-01-05T08:00:00.000Z",
+      "published": true
+    },
+    {
+      "id": 2,
+      "title_am": "የበዓል ማስታወቂያ",
+      "title_en": "Holiday Announcement",
+      "summary_am": "ስለ መጪው በዓል ዝርዝር መረጃ።",
+      "summary_en": "Details about the upcoming holiday service.",
+      "body_am": "<p>ዝርዝር መረጃው ወደ ፊት ይጨመራል።</p>",
+      "body_en": "<p>Further details will be added soon.</p>",
+      "image": null,
+      "author": "Admin",
+      "date": "2026-02-10T08:00:00.000Z",
+      "published": true
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ዜናዎች | News</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header id="site-header" class="site-header"></header>
+
+<main>
+  <div class="wrap layout">
+    <section>
+      <h2 class="section-title" data-i18n="nav_news"></h2>
+
+      <div class="panel news-ticker-wrap" style="margin-bottom:26px;">
+        <span class="news-ticker-label" data-i18n="breaking"></span>
+        <div class="news-ticker" id="news-ticker" style="height:220px;">
+          <div class="news-ticker-track" id="news-ticker-track">
+            <ul class="news-list" id="ticker-news-list">
+              <li class="skeleton" data-i18n="loading"></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <ul class="news-list" id="news-list">
+        <li class="skeleton" data-i18n="loading"></li>
+      </ul>
+    </section>
+
+    <aside class="panel">
+      <p class="sidebar-title" data-i18n="nav_home"></p>
+      <ul class="page-links" id="page-links"></ul>
+    </aside>
+  </div>
+</main>
+
+<footer id="site-footer" class="site-footer"></footer>
+
+<script src="/js/i18n.js"></script>
+<script src="/js/api.js"></script>
+<script src="/js/layout.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/news.js"></script>
+<!-- news.js overrides the shared bootstrap to load all posts instead of the home page's 5 -->
+</body>
+</html>

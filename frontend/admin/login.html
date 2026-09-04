@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Login</title>
+<link rel="stylesheet" href="/admin/css/admin.css">
+</head>
+<body>
+<div class="login-shell">
+  <div class="login-card">
+    <div class="lang-switch login-lang-switch" role="group" aria-label="Language">
+      <button data-lang-btn="am">አማ</button>
+      <button data-lang-btn="en">EN</button>
+    </div>
+    <h1 id="card-title" data-i18n="adm_login_title">Admin Login</h1>
+    <p class="sub" id="card-sub" data-i18n="adm_login_sub">Sign in to manage news and pages.</p>
+    <div id="msg"></div>
+    <form id="auth-form">
+      <div class="field">
+        <label for="username" data-i18n="adm_username">Username</label>
+        <input type="text" id="username" autocomplete="username" required>
+      </div>
+      <div class="field">
+        <label for="password" data-i18n="adm_password">Password</label>
+        <input type="password" id="password" autocomplete="current-password" required>
+      </div>
+      <div class="field" id="confirm-field" style="display:none;">
+        <label for="confirm" data-i18n="adm_confirm_password">Confirm password</label>
+        <input type="password" id="confirm" autocomplete="new-password">
+      </div>
+      <button class="btn" type="submit" id="submit-btn" data-i18n="adm_sign_in">Sign in</button>
+    </form>
+  </div>
+</div>
+
+<script src="/js/i18n.js"></script>
+<script src="/admin/js/admin-api.js"></script>
+<script>
+  const form = document.getElementById('auth-form');
+  const msg = document.getElementById('msg');
+  let isSetup = false;
+
+  function showMsg(text, kind) {
+    msg.innerHTML = text ? `<div class="msg ${kind}">${text}</div>` : '';
+  }
+
+  function applySetupLabels() {
+    if (!isSetup) return;
+    document.getElementById('card-title').removeAttribute('data-i18n');
+    document.getElementById('card-title').textContent = i18n.t('adm_setup_title');
+    document.getElementById('card-sub').removeAttribute('data-i18n');
+    document.getElementById('card-sub').textContent = i18n.t('adm_setup_sub');
+    document.getElementById('confirm-field').style.display = 'block';
+    document.getElementById('submit-btn').removeAttribute('data-i18n');
+    document.getElementById('submit-btn').textContent = i18n.t('adm_create_account');
+  }
+
+  (async function init() {
+    try {
+      const status = await AdminAPI.status();
+      if (!status.hasAdmin) {
+        isSetup = true;
+        applySetupLabels();
+      }
+    } catch (e) {
+      showMsg(i18n.t('adm_no_server'), 'error');
+    }
+  })();
+
+  // Keep the setup-mode labels (which aren't plain data-i18n text) in sync too.
+  document.addEventListener('i18n:change', applySetupLabels);
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    showMsg('', '');
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value;
+
+    if (isSetup) {
+      const confirm = document.getElementById('confirm').value;
+      if (password !== confirm) {
+        showMsg(i18n.t('adm_password_mismatch'), 'error');
+        return;
+      }
+      try {
+        const res = await AdminAPI.setup(username, password);
+        AdminAPI.setSession(res.token, res.username);
+        window.location.href = '/admin/dashboard.html';
+      } catch (e) {
+        showMsg(e.message, 'error');
+      }
+    } else {
+      try {
+        const res = await AdminAPI.login(username, password);
+        AdminAPI.setSession(res.token, res.username);
+        window.location.href = '/admin/dashboard.html';
+      } catch (e) {
+        showMsg(e.message, 'error');
+      }
+    }
+  });
+</script>
+</body>
+</html>

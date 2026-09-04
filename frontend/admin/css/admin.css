@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@400;600;700&family=Noto+Sans+Ethiopic:wght@400;500;600&display=swap');
+
+:root {
+  --bg: #F4F6FA;
+  --panel: #FFFFFF;
+  --ink: #1B2333;
+  --ink-soft: #545F73;
+  --maroon: #E8752C;
+  --maroon-deep: #C85F1D;
+  --navy: #0B1830;
+  --navy-mid: #13294B;
+  --gold: #E8752C;
+  --green: #2E8B57;
+  --danger: #C23B32;
+  --rule: #E1E6EE;
+  --radius: 6px;
+  --font-serif: 'Noto Serif Ethiopic', Georgia, serif;
+  --font-sans: 'Noto Sans Ethiopic', -apple-system, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  background-image: linear-gradient(rgba(244, 246, 250, 0.9), rgba(244, 246, 250, 0.92)),
+    url('/img/church-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+a { color: var(--maroon); }
+
+.admin-header {
+  background: var(--navy);
+  color: #F2F5FA;
+  padding: 16px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid var(--maroon);
+}
+
+.admin-header h1 {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+.admin-header .who { font-size: 0.85rem; color: #9FB2CC; }
+
+.admin-header .header-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: #F2F5FA;
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+}
+
+.btn-link:hover { text-decoration: none; color: #fff; }
+
+.admin-shell {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  min-height: calc(100vh - 62px);
+}
+
+.admin-tabs {
+  background: rgba(19, 41, 75, 0.95);
+  padding: 20px 0;
+}
+
+.admin-tabs button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  padding: 13px 26px;
+  background: none;
+  border: none;
+  border-left: 3px solid transparent;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: #C6D1E3;
+  cursor: pointer;
+}
+
+.admin-tabs button:hover { background: rgba(255,255,255,0.06); color: #fff; }
+
+.admin-tabs button.active {
+  border-left-color: var(--maroon);
+  background: rgba(232,117,44,0.16);
+  color: #fff;
+  font-weight: 600;
+}
+
+.admin-main { padding: 28px 34px; max-width: 920px; }
+
+.admin-main h2 {
+  font-family: var(--font-serif);
+  margin-top: 0;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  margin-bottom: 22px;
+  box-shadow: 0 4px 16px rgba(11,24,48,0.06);
+}
+
+.list-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-top: 1px solid var(--rule);
+}
+.list-row:first-child { border-top: none; }
+
+.list-row .info strong { display: block; }
+.list-row .info span { font-size: 0.82rem; color: var(--ink-soft); }
+
+.row-actions button {
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  padding: 6px 10px;
+  border-radius: var(--radius);
+  border: 1px solid var(--rule);
+  background: #fff;
+  cursor: pointer;
+  margin-left: 6px;
+}
+.row-actions .danger { color: var(--danger); border-color: var(--danger); }
+
+.field { margin-bottom: 16px; }
+.field label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.field .hint { font-weight: 400; color: var(--ink-soft); font-size: 0.78rem; }
+
+.field input[type="text"],
+.field input[type="password"],
+.field input[type="file"],
+.field textarea {
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  background: #fff;
+}
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+@media (max-width: 700px) { .two-col { grid-template-columns: 1fr; } }
+
+.editor-box {
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+.editor-box .ql-container { min-height: 160px; font-family: var(--font-serif); font-size: 1rem; }
+
+.checkbox-row { display: flex; align-items: center; gap: 8px; }
+.checkbox-row input { width: auto; }
+
+.btn {
+  font-family: var(--font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  background: var(--maroon);
+  color: #fff;
+}
+.btn:hover { background: var(--maroon-deep); }
+.btn.secondary { background: #fff; color: var(--ink); border: 1px solid var(--rule); }
+.btn.small { padding: 6px 12px; font-size: 0.85rem; }
+
+.msg { font-size: 0.88rem; margin: 10px 0; padding: 10px 12px; border-radius: var(--radius); }
+.msg.error { background: #F6DFDD; color: var(--danger); }
+.msg.success { background: #DFEAE2; color: var(--green); }
+
+.empty-state { color: var(--ink-soft); font-size: 0.9rem; }
+
+.login-shell {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(rgba(8,17,35,0.88), rgba(11,24,48,0.92)),
+    url('/img/church-hero.jpg');
+  background-size: cover;
+  background-position: center 30%;
+}
+
+.login-card {
+  background: var(--panel);
+  border-radius: 14px;
+  box-shadow: 0 24px 48px rgba(11,24,48,0.35);
+  padding: 34px 32px;
+  width: 100%;
+  max-width: 360px;
+  border-top: 5px solid var(--maroon);
+}
+
+.login-card h1 {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  margin: 0 0 4px;
+  text-align: center;
+}
+.login-card p.sub {
+  text-align: center;
+  color: var(--ink-soft);
+  font-size: 0.85rem;
+  margin: 0 0 22px;
+}
+
+.login-card .btn { width: 100%; }
